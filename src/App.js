@@ -13,8 +13,8 @@ function App() {
   const [currentStonkPrice, setCurrentStonkPrice] = useState(-1);
   const [priceTime, setPriceTime] = useState(null);
   const directionEmoji = {
-    priceUp: "up emoji",
-    priceDown: "down emoji",
+    priceUp: "🚀",
+    priceDown: "💩",
   };
   const direction = useMemo(() => {
     return prevPrice < currentStonkPrice
@@ -26,7 +26,7 @@ function App() {
   //testing
   const testingPrice = [145.23, 150.43, 143.24, 170.68, 220];
   function getStonkUrl() {
-    return `http://localhost:8000/get/${symbolName}`;
+    return `https://proxy-yahoo-finance.herokuapp.com/get/${symbolName}`;
   }
 
   function round(number){
@@ -41,7 +41,7 @@ function App() {
     const chartData = data.map((_timestamp , index) => {
       return {
         x: new Date(_timestamp *1000),
-        y:[ round( quote.open[index]) , round( quote.high[index]) , round( quote.low[index]) , round( quote.close[index])]
+        y:[ round( quote.open[index]) , round( quote.high[index]) , round(quote.low[index]) ,round( quote.close[index])]
       }
     })
     setChartDataObj({series: [{data: chartData}]})
@@ -116,6 +116,10 @@ function App() {
 
   return (
     <div>
+      <div className="warning text-center">
+        Don't use this Site to make financial decision ⚠️
+
+      </div>
       <div className="ticker text-center">{symbolName}</div>
       <div className={["price", "text-center"].join(" ")}>
         {currentStonkPrice > -1

@@ -12,12 +12,16 @@ body {
 .ticker{
   font-size: 15vmin;
 }
+.warning{
+  color: red;
+  font-size: 3vmin;
+}
 
 .price{
-  font-size: 20vmin;
+  font-size: 12vmin;
 }
 .price-time{
-  font-size: 10vmin;
+  font-size: 6vmin;
 }
 
 .priceDown{
